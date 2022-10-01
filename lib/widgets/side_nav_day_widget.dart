@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../common/Poppins.font.dart';
-import '../models/side_nav_day_model.dart';
+import '../common/poppins_fonts.dart';
+import '../models/weather_model.dart';
 
 class SideNavDayWidget extends StatefulWidget {
   final int index;
   final int listSize;
-  final SideNavDayModel data;
-  final void Function(SideNavDayModel) onClick;
-  final void Function(int, SideNavDayModel) onDelete;
+  final WeatherModel data;
+  final void Function(WeatherModel) onClick;
+  final void Function(int, WeatherModel) onDelete;
 
   const SideNavDayWidget(
       {super.key,

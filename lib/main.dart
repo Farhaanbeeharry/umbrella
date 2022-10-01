@@ -10,6 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Umbrella', home: HomepageWeb());
+    return const MaterialApp(title: 'Umbrella', home: HomepageWeb());
   }
 }
