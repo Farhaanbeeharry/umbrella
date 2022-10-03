@@ -103,14 +103,16 @@ class _HomepageWebState extends State<HomepageWeb> {
       homeUmbrellas = 0;
       officeUmbrellas = 0;
       for (int i = 0; i < sideNavList.length; i++) {
-        if (sideNavList[i].isRainingAM()) {
-          if (i == 0) {
+        if (i == 0) {
+          if (sideNavList[i].isRainingAM()) {
             homeUmbrellas++;
-          } else if (!sideNavList[i - 1].isRainingPM()) {
-            homeUmbrellas++;
+          } else if (sideNavList[i].isRainingPM()) {
+            officeUmbrellas++;
           }
-        } else if (sideNavList[i].isRainingPM()) {
-          if (!sideNavList[i].isRainingAM()) {
+        } else {
+          if (sideNavList[i].isRainingAM() && !sideNavList[i - 1].isRainingPM()) {
+            homeUmbrellas++;
+          } else if (sideNavList[i].isRainingPM() && !sideNavList[i].isRainingAM()) {
             officeUmbrellas++;
           }
         }
