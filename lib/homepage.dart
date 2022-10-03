@@ -479,106 +479,107 @@ class _HomepageWebState extends State<HomepageWeb> {
                 ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      String newDay = 'Day ${sideNavList.length + 1}';
-                      setState(() {
-                        for (var item in sideNavList) {
-                          item.isSelected = false;
-                        }
-                        sideNavList.add(WeatherModel(day: newDay, isSelected: true));
-                        selectedId = sideNavList.last.id;
-                        _scrollController.animateTo(
-                            _scrollController.position.maxScrollExtent + 50.0,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeIn);
-                      });
-                    },
-                    child: Container(
-                      width: 210.0,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(
-                            10.0,
-                          ),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 3.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.add,
-                              color: Colors.white,
+              if (!showingResult)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        String newDay = 'Day ${sideNavList.length + 1}';
+                        setState(() {
+                          for (var item in sideNavList) {
+                            item.isSelected = false;
+                          }
+                          sideNavList.add(WeatherModel(day: newDay, isSelected: true));
+                          selectedId = sideNavList.last.id;
+                          _scrollController.animateTo(
+                              _scrollController.position.maxScrollExtent + 50.0,
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.easeIn);
+                        });
+                      },
+                      child: Container(
+                        width: 210.0,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              10.0,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3.0, left: 5.0),
-                              child: Text(
-                                'Add more day',
-                                style: TextStyle(
-                                    fontFamily: Poppins.regular,
-                                    fontSize: 16.0,
-                                    color: Colors.white),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8125,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Calculate number of umbrella(s)',
-                          style: TextStyle(
-                            fontFamily: Poppins.regular,
-                            color: Colors.white,
                           ),
                         ),
-                        const SizedBox(
-                          width: 20.0,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              calculateNumberOfUmbrellas();
-                            });
-                          },
-                          child: Container(
-                            width: 40.0,
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 3.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.add,
                                 color: Colors.white,
-                                width: 3.0,
                               ),
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(
-                              Icons.chevron_right,
-                              color: Colors.white,
-                              size: 30.0,
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                                child: Text(
+                                  'Add more day',
+                                  style: TextStyle(
+                                      fontFamily: Poppins.regular,
+                                      fontSize: 16.0,
+                                      color: Colors.white),
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 70.0,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8125,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Calculate number of umbrella(s)',
+                            style: TextStyle(
+                              fontFamily: Poppins.regular,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20.0,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                calculateNumberOfUmbrellas();
+                              });
+                            },
+                            child: Container(
+                              width: 40.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 3.0,
+                                ),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.chevron_right,
+                                color: Colors.white,
+                                size: 30.0,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 70.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),

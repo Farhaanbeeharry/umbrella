@@ -16,7 +16,7 @@ class WeatherModel {
   }
 
   bool isRainingPM() {
-    return weatherPM == 'Rainy' || weatherAM == 'Thunderstorm';
+    return weatherPM == 'Rainy' || weatherPM == 'Thunderstorm';
   }
 
   @override
