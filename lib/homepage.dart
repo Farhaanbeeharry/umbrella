@@ -101,22 +101,21 @@ class _HomepageWebState extends State<HomepageWeb> {
   void calculateNumberOfUmbrellas() {
     if (checkForEmptyValue()) {
       homeUmbrellas = 0;
+      int homeUmbrellasLeft = 0;
       officeUmbrellas = 0;
-      for (int i = 0; i < sideNavList.length; i++) {
-        if (i == 0) {
-          if (sideNavList[i].isRainingAM()) {
-            homeUmbrellas++;
-          } else if (sideNavList[i].isRainingPM()) {
-            officeUmbrellas++;
-          }
-        } else {
-          if (sideNavList[i].isRainingAM() && !sideNavList[i - 1].isRainingPM()) {
-            homeUmbrellas++;
-          } else if (sideNavList[i].isRainingPM() && !sideNavList[i].isRainingAM()) {
-            officeUmbrellas++;
-          }
+      int officeUmbrellasLeft = 0;
+
+      for (var day in sideNavList) {
+        if (day.isRainingAM()) {
+          homeUmbrellasLeft == 0 ? homeUmbrellas++ : homeUmbrellasLeft--;
+          officeUmbrellasLeft++;
+        }
+        if (day.isRainingPM()) {
+          officeUmbrellasLeft == 0 ? officeUmbrellas++ : officeUmbrellasLeft--;
+          homeUmbrellasLeft++;
         }
       }
+
       showingResult = true;
     }
   }
